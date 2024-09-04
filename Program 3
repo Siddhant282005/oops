@@ -11,8 +11,6 @@ SOURCE CODE
 
 using namespace std;
 
-class Solution {
-  public:
 
     void nonRepeating(string & st, int freq[200]) {
       int i, j;
@@ -25,7 +23,7 @@ class Solution {
           if (st[i] == st[j]) {
             freq[i]++;
 
-            st[j] = '-'; // set st[j] to - to avoid visited character
+            st[j] = '-'; 
           }
         }
       }
@@ -36,19 +34,15 @@ class Solution {
         }
       }
     }
-};
+
 int main() {
 
   string st = "graphic era hill university";
 
   int l = st.length();
-  int freq[200] = {
-    0
-  };
-
-  Solution obj;
+  int freq[200] = {0};
   cout << "Non-repeative character:" << "\n";
-  obj.nonRepeating(st, freq);
+  nonRepeating(st, freq);
 
   return 0;
 }
