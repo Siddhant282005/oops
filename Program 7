@@ -1,0 +1,106 @@
+Question -:
+
+Implement a Program in C++ by defining a class to represent a bank account.
+Include the following:
+Data Members
+● Name of the depositor
+● Account number
+● Type of account (Saving, Current etc.)
+● Balance amount in the account
+Member Functions
+● To assign initial values
+● To deposit an amount
+● To withdraw an amount after checking the balance
+● To display name and balance
+
+SOURCE CODE
+
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+class BankAccount {
+private:
+    string name;
+    int accountNumber;
+    string accountType;
+    double balance;
+
+public:
+   
+    void setInitialValues(string depositorName, int accNumber, string accType, double initialBalance) {
+        name = depositorName;
+        accountNumber = accNumber;
+        accountType = accType;
+        balance = initialBalance;
+    }
+
+  
+    void deposit(double amount) {
+        if (amount > 0) {
+            balance += amount;
+            cout << "Deposited: " << amount << endl;
+        } else {
+            cout << "Invalid deposit amount!" << endl;
+        }
+    }
+
+   
+    void withdraw(double amount) {
+        if (amount > 0 && amount <= balance) {
+            balance -= amount;
+            cout << "Withdrew: " << amount << endl;
+        } else {
+            cout << "Invalid withdrawal amount or insufficient funds!" << endl;
+        }
+    }
+
+    
+    void display()  {
+        cout << "Account Holder: " << name << endl;
+        cout << "Account Number: " << accountNumber << endl;
+        cout << "Account Type: " << accountType << endl;
+        cout << "Balance: " << balance << endl;
+    }
+};
+
+int main() {
+    BankAccount myAccount;
+
+    string depositorName;
+    int accNumber;
+    string accType;
+    double initialBalance;
+
+    cout << "Enter account holder's name: ";
+    getline(cin, depositorName);
+
+    cout << "Enter account number: ";
+    cin >> accNumber;
+
+    cin.ignore();
+
+    cout << "Enter account type (e.g., Saving, Current): ";
+    getline(cin, accType);
+
+    cout << "Enter initial balance: ";
+    cin >> initialBalance;
+
+    myAccount.setInitialValues(depositorName, accNumber, accType, initialBalance);
+
+    myAccount.display();
+
+    double depositAmount, withdrawAmount;
+
+    cout << "Enter amount to deposit: ";
+    cin >> depositAmount;
+    myAccount.deposit(depositAmount);
+
+    cout << "Enter amount to withdraw: ";
+    cin >> withdrawAmount;
+    myAccount.withdraw(withdrawAmount);
+    myAccount.display();
+
+    return 0;
+}
