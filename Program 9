@@ -1,0 +1,39 @@
+Construct a Program in C++ to show the working of function overloading(compile time polymorphism) by using a function named calculate Area () to calculate area of square, rectangle and triangle using different signatures as required.
+
+SOURCE CODE:
+
+#include <iostream>
+using namespace std;
+double calculateArea(double side) {
+    return side * side;
+}
+
+double calculateArea(double length, double width) {
+    return length * width;
+}
+
+double calculateArea(double base, double height, bool isTriangle) {
+    if (isTriangle) {
+        return 0.5 * base * height;
+    }
+    return 0; 
+}
+
+int main() {
+    double side = 5.0;
+    double length = 10.0;
+    double width = 4.0;
+    double base = 6.0;
+    double height = 8.0;
+    double squareArea = calculateArea(side);
+    cout << "Area of square with side " << side << " is " << squareArea << endl;
+
+    double rectangleArea = calculateArea(length, width);
+    cout << "Area of rectangle with length " << length << " and width " << width << " is " << rectangleArea << endl;
+
+  
+    double triangleArea = calculateArea(base, height, true);
+    cout << "Area of triangle with base " << base << " and height " << height << " is " << triangleArea << endl;
+
+    return 0;
+}
